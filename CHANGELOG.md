@@ -1,4 +1,7 @@
-### [0.0.1](https://github.com/sdepold
-,/contentful-ghost-importer/releases/tag/v0.0.1)
+# Change Log
+All notable changes to this project will be documented in this file.
+This project adheres to [Semantic Versioning](http://semver.org/).
 
-- The first release
+## v1.0.0 - 2015-11-06
+### Added
+- Initial version of the importer
