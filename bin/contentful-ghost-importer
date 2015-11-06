@@ -1,6 +1,12 @@
 #!/usr/bin/env node
 
-require('babel/register');
+'use strict';
+
+require('babel/register')({
+  ignore: function (filename) {
+    return !filename.match(/contentful-ghost-importer\/src/);
+  }
+});
 
 var argv = require('yargs')
   .usage('Usage: $0 path/to/ghost-export.json')
