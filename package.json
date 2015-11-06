@@ -1,0 +1,21 @@
+{
+  "name": "contentful-ghost-importer",
+  "version": "0.0.1",
+  "description": "A CLI that imports data from ghost to contentful.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sdepold/contentful-ghost-importer.git"
+  },
+  "keywords": [],
+  "author": "Sascha Depold <sascha@depold.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sdepold/contentful-ghost-importer/issues"
+  },
+  "homepage": "https://github.com/sdepold/contentful-ghost-importer",
+  "dependencies": {
+    "babel": "^5.0.0",
+    "contentful-management": "^0.5.0",
+    "yargs": "^3.29.0"
+  }
+}

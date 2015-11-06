@@ -1,0 +1,14 @@
+#!/usr/bin/env node
+
+require('babel/register');
+
+var argv = require('yargs')
+  .usage('Usage: $0 path/to/ghost-export.json')
+  .demand(1)
+  .demand('s').alias('s', 'space-id').describe('s', 'The space id you want to import the data to.')
+  .demand('t').alias('t', 'token').describe('t', 'A CMA access token.')
+  .argv;
+
+var contentfulGhostImporter = require('../src/contentful-ghost-importer');
+
+contentfulGhostImporter.run(argv);
