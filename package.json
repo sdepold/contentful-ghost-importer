@@ -1,6 +1,6 @@
 {
   "name": "contentful-ghost-importer",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "A CLI that imports data from ghost to contentful.",
   "repository": {
     "type": "git",
