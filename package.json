@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/sdepold/contentful-ghost-importer.git"
   },
-  "keywords": [],
+  "keywords": ["contentful", "ghost", "importer"],
   "author": "Sascha Depold <sascha@depold.com>",
   "license": "MIT",
   "bugs": {
@@ -17,5 +17,8 @@
     "babel": "^5.0.0",
     "contentful-management": "^0.5.0",
     "yargs": "^3.29.0"
+  },
+  "bin": {
+    "contentful-ghost-importer": "./bin/contentful-ghost-importer"
   }
 }
