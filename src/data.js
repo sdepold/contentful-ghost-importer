@@ -3,14 +3,14 @@
 export function importData (space, data, contentTypes) {
   return space.getEntries().then((entries) => {
     return Promise.all([
-      importUsers(entries, space, data.users, contentTypes.user),
-      importTags(entries, space, data.tags, contentTypes.tag),
-      importPosts(entries, space, data.posts, contentTypes.post)
+      importUsers(entries, space, data, contentTypes.user),
+      importTags(entries, space, data, contentTypes.tag),
+      importPosts(entries, space, data, contentTypes.post)
     ]);
   });
 }
 
-function importUsers (entries, space, users, userContentType) {
+function importUsers (entries, space, data, userContentType) {
   return importEntities(...arguments, 'user', (user) => {
     return {
       sys: { id: user.slug },
@@ -43,17 +43,31 @@ function importPosts (entries, space, data, contentTypes) {
       fields: {
         title: { 'en-US': post.title },
         slug: { 'en-US': post.slug },
-        body: { 'en-US': post.markdown },
+        body: { 'en-US': post.markdown },
+        publishedAt: { 'en-US': post.published_at },
         metaTitle: { 'en-US': post.meta_title },
-        metaDescription: { 'en-US': post.meta_description }
+        metaDescription: { 'en-US': post.meta_description },
+        author: {
+          'en-US': {
+            sys: {
+              type: 'Link',
+              linkType: 'Entry',
+              id: findUserById(data.users, post.author_id).slug
+            }
+          }
+        }
       }
     };
   });
 }
 
+function findUserById (users, id) {
+  return users.find((user) => (user.id === id));
+}
+
 function importEntities (entries, space, entities, entityContentType, entityName, dataMapper) {
   return Promise.all(
-    entities.map((entityData) => {
+    entities[`${entityName}s`].map((entityData) => {
       let entity = entries.find((entry) => entry.sys.id === entityData.slug);
 
       if (entity) {
@@ -63,6 +77,7 @@ function importEntities (entries, space, entities, entityContentType, entityName
 
       return space
         .createEntry(entityContentType, dataMapper(entityData))
+        .catch(console.log)
         .then((entity) => {
           console.log(`- Created ${entityName} "${entityData.slug}"`);
 
