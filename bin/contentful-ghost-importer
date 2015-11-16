@@ -13,6 +13,9 @@ var argv = require('yargs')
   .demand(1)
   .demand('s').alias('s', 'space-id').describe('s', 'The space id you want to import the data to.')
   .demand('t').alias('t', 'token').describe('t', 'A CMA access token.')
+  .option('host', {
+    alias: 'h', describe: 'The host you want to import the data to.', default: 'api.contentful.com'
+  })
   .argv;
 
 var contentfulGhostImporter = require('../src/contentful-ghost-importer');

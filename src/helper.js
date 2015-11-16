@@ -4,7 +4,8 @@ import * as contentful from 'contentful-management';
 
 export function getClient (argv) {
   return contentful.createClient({
-    accessToken: argv.token
+    accessToken: argv.token,
+    host: argv.host
   });
 }
 
