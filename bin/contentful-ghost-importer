@@ -2,6 +2,10 @@
 
 'use strict';
 
+if (process.env.DEBUG_HTTP) {
+  require('debug-http')();
+}
+
 require('babel/register')({
   ignore: function (filename) {
     return !filename.match(/contentful-ghost-importer\/src/);
@@ -13,6 +17,7 @@ var argv = require('yargs')
   .demand(1)
   .demand('s').alias('s', 'space-id').describe('s', 'The space id you want to import the data to.')
   .demand('t').alias('t', 'token').describe('t', 'A CMA access token.')
+  .demand('b').alias('b', 'blog-host').describe('b', 'The host of the original blog.')
   .option('h', {
     alias: 'host',
     describe: 'The host you want to import the data to.',
