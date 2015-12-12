@@ -14,7 +14,22 @@ The CLI takes care of creating the necessary content types (Post, Tag, User) as
 well as of importing all posts, tags and users from the ghost export into Contentful.
 
 ```
-contentful-ghost-importer -s <spaceId> -t <cmaToken> path/to/ghost-data.json
+contentful-ghost-importer -b <blogHost> -s <spaceId> -t <cmaToken> path/to/ghost-data.json
+```
+
+## Options
+
+The following options are available:
+
+```
+Usage:
+contentful-ghost-importer path/to/ghost-export.json
+
+Options:
+  -s, --space-id  The space id you want to import the data to.    [required]
+  -t, --token     A CMA access token.                             [required]
+  -b, --blog-host The host of the original blog.                  [required]
+  -h, --host      The host you want to import the data to.        [Default: "api.contentful.com"]
 ```
 
 ## Ghost data

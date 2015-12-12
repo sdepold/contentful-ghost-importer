@@ -11,6 +11,9 @@ export function getClient (argv) {
 
 export function getGhostData (argv) {
   var ghostDataPath = argv._[0];
+  var result = require(ghostDataPath).db[0].data;
 
-  return require(ghostDataPath).db[0].data;
+  result.blogHost = argv.blogHost;
+
+  return result;
 }

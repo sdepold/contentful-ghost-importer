@@ -15,6 +15,9 @@ export function run (argv) {
       return ensureContentTypes(space)
         .then((contentTypes) => {
           return importData(space, ghostData, contentTypes);
+        }, (err) => {
+          console.log(err);
+          process.exit(1);
         });
     });
 }
