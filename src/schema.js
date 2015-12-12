@@ -44,7 +44,8 @@ function ensurePost (space, contentTypes) {
     { id: 'publishedAt', name: 'Published At', type: 'Date' },
     { id: 'metaTitle', name: 'Meta Title', type: 'Symbol' },
     { id: 'metaDescription', name: 'Meta Description', type: 'Symbol' },
-    { id: 'author', name: 'Author', type: 'Link', linkType: 'Entry' }
+    { id: 'author', name: 'Author', type: 'Link', linkType: 'Entry' },
+    { id: 'tags', name: 'Tags', type: 'Array', items: { type: 'Link', linkType: 'Entry' }}
   ];
 
   return ensureEntity(space, contentTypes, 'Post', fields);
