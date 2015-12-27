@@ -2,6 +2,9 @@
   "name": "contentful-ghost-importer",
   "version": "1.0.2",
   "description": "A CLI that imports data from ghost to contentful.",
+  "scripts": {
+    "test": "NODE_ENV=test mocha --require babel-register test/*.test.js test/**/*.test.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/sdepold/contentful-ghost-importer.git"
@@ -18,9 +21,13 @@
   },
   "homepage": "https://github.com/sdepold/contentful-ghost-importer",
   "dependencies": {
-    "babel": "^5.0.0",
+    "babel": "^6.3.13",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-register": "^6.3.13",
+    "contentful-blog-importer": "^1.0.0",
     "contentful-management": "^0.5.0",
     "debug-http": "^0.6.0",
+    "lodash": "^3.10.1",
     "mime": "^1.3.4",
     "questor": "^1.0.1",
     "retry": "^0.8.0",
@@ -29,5 +36,10 @@
   },
   "bin": {
     "contentful-ghost-importer": "./bin/contentful-ghost-importer"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2"
   }
 }

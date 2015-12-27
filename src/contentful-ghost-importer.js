@@ -1,23 +1,17 @@
 'use strict';
 
-import { importData } from './data';
-import { getClient, getGhostData } from './helper';
-import { ensureContentTypes } from './schema';
+import ContentfulBlogImporter from 'contentful-blog-importer';
+
+import { getGhostData } from './helper';
+import { mapData } from './data-mapper';
 
 export function run (argv) {
-  const client = getClient(argv);
+  let ghostData  = getGhostData(argv);
+  let mappedData = mapData(ghostData);
 
-  return client
-    .getSpace(argv.spaceId)
-    .then((space) => {
-      let ghostData = getGhostData(argv);
-
-      return ensureContentTypes(space)
-        .then((contentTypes) => {
-          return importData(space, ghostData, contentTypes);
-        }, (err) => {
-          console.log(err);
-          process.exit(1);
-        });
-    });
+  return new ContentfulBlogImporter(
+    argv.spaceId,
+    argv.token,
+    { host: argv.host }
+  ).run(mappedData);
 }

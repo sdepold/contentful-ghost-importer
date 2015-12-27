@@ -6,11 +6,12 @@ if (process.env.DEBUG_HTTP) {
   require('debug-http')();
 }
 
-require('babel/register')({
-  ignore: function (filename) {
-    return !filename.match(/contentful-ghost-importer\/src/);
-  }
+require('babel-register')({
+  only: /contentful-ghost-importer\/src/,
+  presets: ['es2015']
 });
+
+var contentfulGhostImporter = require('../src/contentful-ghost-importer');
 
 var argv = require('yargs')
   .usage('Usage: $0 path/to/ghost-export.json')
@@ -24,7 +25,5 @@ var argv = require('yargs')
     default: 'api.contentful.com'
   })
   .argv;
-
-var contentfulGhostImporter = require('../src/contentful-ghost-importer');
 
 contentfulGhostImporter.run(argv);
