@@ -31,7 +31,8 @@ export function mapPosts (ghostData) {
       metaTitle: post.meta_title,
       metaDescription: post.meta_description,
       author: findById(authors, post.author_id).slug,
-      tags: findTagsForPost(post, ghostData)
+      tags: findTagsForPost(post, ghostData),
+      status: post.status
     }
   });
 }

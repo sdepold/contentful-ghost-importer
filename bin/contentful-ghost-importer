@@ -7,7 +7,7 @@ if (process.env.DEBUG_HTTP) {
 }
 
 require('babel-register')({
-  only: /contentful-ghost-importer\/src/,
+  only: /contentful-(ghost|blog)-importer\/src/,
   presets: ['es2015']
 });
 

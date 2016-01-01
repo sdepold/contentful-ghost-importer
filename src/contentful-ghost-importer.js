@@ -1,9 +1,10 @@
 'use strict';
 
-import ContentfulBlogImporter from 'contentful-blog-importer';
 
 import { getGhostData } from './helper';
 import { mapData } from './data-mapper';
+
+import ContentfulBlogImporter from 'contentful-blog-importer';
 
 export function run (argv) {
   let ghostData  = getGhostData(argv);
