@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+## v1.1.1 - 2016-01-01
+### Fixed
+- Order of module inclusion
+
 ## v1.1.0 - 2015-12-27
 ### Added
 - Tags to post schema
